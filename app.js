@@ -249,7 +249,6 @@ function init() {
   cargarPregunta('mecanica');
   cargarSituacion('clima');
 
-  // Pedir permiso de notificaciones OneSignal
   if('Notification' in window && Notification.permission === 'default') {
     setTimeout(() => {
       if(window.OneSignalDeferred) {
@@ -449,14 +448,14 @@ function siguienteSituacion(cat) {
   cargarSituacion(cat);
 }
 
-// EXAMEN DGT 2026 - 30 PREGUNTAS ROTATIVAS DE 380
+// EXAMEN DGT 2026
 function iniciarExamen() {
   const todas = [
- ...PREGUNTAS.general,
- ...PREGUNTAS.señales,
- ...PREGUNTAS.normas,
- ...PREGUNTAS.mecanica,
- ...SITUACIONES.clima
+   ...PREGUNTAS.general,
+   ...PREGUNTAS.señales,
+   ...PREGUNTAS.normas,
+   ...PREGUNTAS.mecanica,
+   ...SITUACIONES.clima
   ];
 
   if(todas.length < 30) {
@@ -495,9 +494,9 @@ function cargarPreguntaExamen() {
   if(estado.examen.indice >= 30) return finalizarExamen();
 
   const p = estado.examen.preguntas[estado.examen.indice];
-  document.getElementById('examen-num').text
   document.getElementById('examen-num').textContent = estado.examen.indice + 1;
-  document.getElementById('examen-aciertos').textContent = estado.examen.aciertos;
+  document.getElementById('examen-aciertos').
+    document.getElementById('examen-aciertos').textContent = estado.examen.aciertos;
   document.getElementById('examen-pregunta').textContent = p.q;
   document.getElementById('examen-progress').style.width = `${(estado.examen.indice/30)*100}%`;
 
@@ -674,20 +673,19 @@ function actualizarMensajeMotivacional() {
   if (el) el.textContent = msg;
 }
 
-// 1. Pedir permiso al abrir la app
+// NOTIFICACIONES
 if ('Notification' in window && Notification.permission === 'default') {
   Notification.requestPermission();
 }
 
-// 2. Función base para mandar notificaciones
 function notificacionLocal(titulo, mensaje) {
   if (Notification.permission !== 'granted') return;
   
   navigator.serviceWorker.ready.then(registration => {
     registration.showNotification(titulo, {
       body: mensaje,
-      icon: '/NOMBRE-DE-TU-REPO/icon-192.png',
-      badge: '/NOMBRE-DE-TU-REPO/icon-192.png',
+      icon: '/GASDRIVEPLUS/icon-192.png',
+      badge: '/GASDRIVEPLUS/icon-192.png',
       vibrate: [200, 100, 200],
       tag: 'gasdrive-motivation',
       renotify: true
@@ -695,7 +693,6 @@ function notificacionLocal(titulo, mensaje) {
   });
 }
 
-// 40 frases de motivación - se rotan automáticamente
 const FRASES_MOTIVACION = [
   "☀️ Buenos días - 10 preguntas y hoy estás más cerca del carnet.",
   "🌙 Hora de estudiar - 5 min ahora = 0 fallos mañana.",
@@ -741,7 +738,7 @@ const FRASES_MOTIVACION = [
 
 function programarNotificacionesDiarias() {
   if (localStorage.getItem('notifsProgramadas') === 'true') return;
-  if (Notification.permission!== 'granted') return;
+  if (Notification.permission !== 'granted') return;
 
   let indice = parseInt(localStorage.getItem('notifIndice') || '0');
 
@@ -761,13 +758,11 @@ function programarNotificacionesDiarias() {
     localStorage.setItem('notifIndice', indice);
   }
 
-  // 8:00 AM
   setTimeout(() => {
     enviarNotificacion();
     setInterval(enviarNotificacion, 24 * 60 * 60 * 1000);
   }, calcularDelay(8, 0));
 
-  // 19:00 PM
   setTimeout(() => {
     enviarNotificacion();
     setInterval(enviarNotificacion, 24 * 60 * 60 * 1000);
@@ -776,7 +771,6 @@ function programarNotificacionesDiarias() {
   localStorage.setItem('notifsProgramadas', 'true');
 }
 
-// 4. Mensajes por evento
 function notifRachaRota(rachaAnterior) {
   if (rachaAnterior > 3) {
     notificacionLocal('🔥 Racha rota', `Llevabas ${rachaAnterior} días seguidos. Vuelve y retómala ahora`);
@@ -797,5 +791,4 @@ function notifRecordatorio24h() {
   }
 }
 
-// 5. Llama a notifRecordatorio24h() cada vez que abra la app
 notifRecordatorio24h();
