@@ -1,11 +1,11 @@
 const CACHE_NAME = 'gasdrive-v7.10';
 const urlsToCache = [
-  '/NOMBRE-DE-TU-REPO/',
-  '/NOMBRE-DE-TU-REPO/index.html',
-  '/NOMBRE-DE-TU-REPO/app.js',
-  '/NOMBRE-DE-TU-REPO/manifest.json',
-  '/NOMBRE-DE-TU-REPO/icon-192.png',
-  '/NOMBRE-DE-TU-REPO/icon-512.png'
+  '/GASDRIVEPLUS/',
+  '/GASDRIVEPLUS/index.html',
+  '/GASDRIVEPLUS/app.js',
+  '/GASDRIVEPLUS/manifest.json',
+  '/GASDRIVEPLUS/icon-192.png',
+  '/GASDRIVEPLUS/icon-512.png'
 ];
 
 // INSTALAR y cachear todo
@@ -39,7 +39,7 @@ self.addEventListener('fetch', event => {
       .then(response => {
         return response || fetch(event.request).catch(() => {
           if (event.request.destination === 'document') {
-            return caches.match('/NOMBRE-DE-TU-REPO/index.html');
+            return caches.match('/GASDRIVEPLUS/index.html');
           }
         });
       })
@@ -52,8 +52,8 @@ self.addEventListener('push', event => {
   const title = data.title || 'GasDrive';
   const options = {
     body: data.body || 'Tienes un mensaje nuevo',
-    icon: '/NOMBRE-DE-TU-REPO/icon-192.png',
-    badge: '/NOMBRE-DE-TU-REPO/icon-192.png',
+    icon: '/GASDRIVEPLUS/icon-192.png',
+    badge: '/GASDRIVEPLUS/icon-192.png',
     tag: data.tag || 'gasdrive-general',
     requireInteraction: true
   };
@@ -63,5 +63,5 @@ self.addEventListener('push', event => {
 // CLICK EN NOTIFICACIÓN
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  event.waitUntil(clients.openWindow('/NOMBRE-DE-TU-REPO/'));
+  event.waitUntil(clients.openWindow('/GASDRIVEPLUS/'));
 });
