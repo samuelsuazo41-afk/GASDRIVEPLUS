@@ -4,8 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GasDrive DGT 2026</title>
+
+<!-- PWA -->
 <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="./icon-192.png">
+
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
@@ -107,8 +113,8 @@ body {
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "9665c316-3e49-4faf-b571-540644a3be9c",
-      serviceWorkerPath: "/GASDRIVEPLUS/",
-      serviceWorkerParam: { scope: "/GASDRIVEPLUS/" }
+      serviceWorkerPath: "./",
+      serviceWorkerParam: { scope: "./" }
     });
   });
 </script>
