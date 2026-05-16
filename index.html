@@ -31,9 +31,10 @@ body {
   padding-bottom: 80px;
 }
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #a9a9a9 100%);
   padding: 20px;
   text-align: center;
+  color: #1a1a24;
 }
 .header h1 { font-size: 24px; margin-bottom: 5px; }
 .coins { font-size: 20px; font-weight: bold; }
@@ -61,7 +62,7 @@ body {
   justify-content: center;
   gap: 4px;
 }
-.tab-btn.active { color: #667eea; }
+.tab-btn.active { color: #c0c0c0; }
 .tab-btn svg { width: 24px; height: 24px; }
 
 .tab-content { display: none; padding: 20px; }
@@ -76,10 +77,10 @@ body {
 .btn {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #a9a9a9 100%);
   border: none;
   border-radius: 8px;
-  color: white;
+  color: #1a1a24;
   font-weight: bold;
   font-size: 16px;
   margin-top: 10px;
@@ -107,15 +108,16 @@ body {
 .garage-car.locked, .emoji-item.locked { opacity: 0.4; }
 
 .btn-buy {
-  background: #22c55e;
+  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
   border: none;
   padding: 10px;
   border-radius: 6px;
-  color: white;
+  color: #1a1a24;
   width: 100%;
   margin-top: 10px;
+  font-weight: bold;
 }
-.btn-buy:disabled { background: #555; }
+.btn-buy:disabled { background: #555; color: #aaa; }
 
 .progress-bar {
   height: 6px;
@@ -126,7 +128,7 @@ body {
 }
 .progress-fill {
   height: 100%;
-  background: #667eea;
+  background: linear-gradient(90deg, #c0c0c0 0%, #e8e8e8 100%);
   width: 0%;
   transition: width 0.3s;
 }
@@ -145,7 +147,7 @@ body {
   border-radius: 8px;
   white-space: nowrap;
 }
-.sub-tab-btn.active { background: #667eea; color: white; }
+.sub-tab-btn.active { background: #c0c0c0; color: #1a1a24; }
 
 .sub-content { display: none; }
 .sub-content.active { display: block; }
@@ -170,7 +172,7 @@ body {
 <div class="header">
   <h1>🏎️ GasDrive DGT 2026</h1>
   <div class="coins" id="coins">💰 0</div>
-  <div id="motivacion" style="font-size:14px;margin-top:8px;color:#aaa"></div>
+  <div id="motivacion" style="font-size:14px;margin-top:8px;color:#333"></div>
 </div>
 
 <div id="tab-test" class="tab-content active">
@@ -332,4 +334,4 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 </body>
-                       </html>
+</html>
