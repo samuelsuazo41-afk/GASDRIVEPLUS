@@ -2,336 +2,456 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GasDrive Plus V7.13</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>DRIVE20Y V11.10.16</title>
+<meta name="theme-color" content="#FF3B30">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "9665c316-3e49-4faf-b571-540644a3b...",
-      serviceWorkerPath: "OneSignalSDKWorker.js",
-      serviceWorkerUpdaterPath: "OneSignalSDKWorker.js",
-      notifyButton: {
-        enable: true,
-      },
-    });
-  });
-</script>
+<link rel="manifest" href="manifest.json">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
-  background: #0a0a0f; 
-  color: #fff; 
-  padding-bottom: 80px;
-}
-.header {
-  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #a9a9a9 100%);
-  padding: 20px;
-  text-align: center;
-  color: #1a1a24;
-}
-.header h1 { font-size: 24px; margin-bottom: 5px; }
-.coins { font-size: 20px; font-weight: bold; }
-
-.tabs {
-  display: flex;
-  background: #1a1a24;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
-  border-top: 1px solid #2a2a35;
-  z-index: 100;
-}
-.tab-btn {
-  flex: 1;
-  background: none;
-  border: none;
-  color: #666;
-  font-size: 11px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-.tab-btn.active { color: #c0c0c0; }
-.tab-btn svg { width: 24px; height: 24px; }
-
-.tab-content { display: none; padding: 20px; }
-.tab-content.active { display: block; }
-
-.card {
-  background: #1a1a24;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 15px;
-}
-.btn {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #a9a9a9 100%);
-  border: none;
-  border-radius: 8px;
-  color: #1a1a24;
-  font-weight: bold;
-  font-size: 16px;
-  margin-top: 10px;
-}
-.btn:disabled { opacity: 0.5; }
-
-.opcion {
-  background: #2a2a35;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-.opcion.correcta { background: #22c55e; }
-.opcion.incorrecta { background: #ef4444; }
-.opcion.bloqueada { pointer-events: none; opacity: 0.6; }
-
-.garage-car, .emoji-item {
-  background: #1a1a24;
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  margin-bottom: 15px;
-}
-.garage-car.locked, .emoji-item.locked { opacity: 0.4; }
-
-.btn-buy {
-  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  color: #1a1a24;
-  width: 100%;
-  margin-top: 10px;
-  font-weight: bold;
-}
-.btn-buy:disabled { background: #555; color: #aaa; }
-
-.progress-bar {
-  height: 6px;
-  background: #2a2a35;
-  border-radius: 3px;
-  overflow: hidden;
-  margin: 10px 0;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #c0c0c0 0%, #e8e8e8 100%);
-  width: 0%;
-  transition: width 0.3s;
-}
-
-.sub-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  overflow-x: auto;
-}
-.sub-tab-btn {
-  padding: 10px 15px;
-  background: #1a1a24;
-  border: none;
-  color: #666;
-  border-radius: 8px;
-  white-space: nowrap;
-}
-.sub-tab-btn.active { background: #c0c0c0; color: #1a1a24; }
-
-.sub-content { display: none; }
-.sub-content.active { display: block; }
-
-.feedback { margin: 10px 0; font-weight: bold; }
-.feedback.acierto { color: #22c55e; }
-.feedback.fallo { color: #ef4444; }
-
-@keyframes bounceIn {
- 0% { transform: translateY(-50%) scale(0); }
- 50% { transform: translateY(-50%) scale(1.2); }
- 100% { transform: translateY(-50%) scale(1); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+:root{--bg:#000;--fg:#fff;--neon:#FF3B30;--neon2:#FFD700;--red:#FF3B30;--amber:#FF9500;--border:#222}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'SF Mono','Courier New',monospace;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--fg);padding:12px;max-width:500px;margin:0 auto;padding-bottom:80px}
+h1{color:var(--neon);text-align:center;font-size:26px;margin:4px 0;letter-spacing:3px}
+.tagline{color:var(--neon2);text-align:center;font-size:10px;margin-bottom:12px;opacity:.7}
+.notif-btn{background:#0a0a0a;border:1px solid var(--neon);color:var(--neon);width:100%;padding:10px;font-size:10px;margin-bottom:12px;border-radius:4px;text-transform:uppercase;cursor:pointer}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:10}
+.btn{border:1px solid var(--border);background:#0a0a0a;color:var(--fg);padding:10px 4px;cursor:pointer;font-weight:600;font-size:9px;text-transform:uppercase;border-radius:4px}
+.btn.active{border-color:var(--neon);background:var(--neon);color:var(--bg)}
+.btn.ans{background:#1C1C1E;border:1px solid var(--border);padding:12px;margin:6px 0;text-align:left;font-size:12px;font-weight:400;text-transform:none;width:100%;border-radius:4px}
+.btn.ans:active{border-color:var(--neon)}
+.card{border:1px solid var(--border);padding:14px;margin-bottom:12px;border-radius:8px;background:#050505}
+.card h2{color:var(--neon);font-size:13px;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+label{display:block;font-size:10px;color:var(--neon2);margin:10px 0 4px;text-transform:uppercase}
+select,textarea{width:100%;background:#111;border:1px solid var(--border);color:var(--fg);padding:12px;font-size:16px;border-radius:4px}
+select:focus,textarea:focus{outline:none;border-color:var(--neon)}
+textarea{resize:vertical;min-height:70px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.save{background:var(--neon);color:var(--bg);border:none;width:100%;padding:16px;font-weight:700;font-size:13px;margin-top:12px;cursor:pointer;border-radius:4px;text-transform:uppercase}
+.save:active{transform:scale(.98)}
+.save:disabled{background:#555;color:#999}
+.alert{border-left:3px solid var(--neon);background:#1a0000;padding:12px;margin:12px 0;font-size:11px;border-radius:4px;line-height:1.5}
+.alert.amber{border-left-color:var(--amber);background:#1a1000}
+.score{font-size:40px;color:var(--neon);text-align:center;margin:8px 0;font-weight:700}
+.metric{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px}
+.metric:last-child{border-bottom:none}
+.metric.val{color:var(--neon);font-weight:700}
+.footer{text-align:center;font-size:9px;color:#444;margin-top:20px}
+.hidden{display:none}
+pre{font-family:monospace;font-size:9px;line-height:1;color:var(--neon2)}
+.badge{background:var(--neon);color:var(--bg);padding:2px 6px;border-radius:4px;font-size:10px;margin-left:4px}
+.tip{border-left:3px solid var(--neon);padding-left:8px;margin:8px 0;font-size:12px}
 </style>
 </head>
 <body>
+<h1>DRIVE20Y 🚗</h1>
+<div class="tagline">Build Cars. Master Driving. 20Y Execution.</div>
 
-<div class="header">
-  <h1>🏎️ GasDrive DGT 2026</h1>
-  <div class="coins" id="coins">💰 0</div>
-  <div id="motivacion" style="font-size:14px;margin-top:8px;color:#333"></div>
+<button class="notif-btn" onclick="requestNotifPerm()">ACTIVAR NOTIFICACIONES 8AM + 8PM</button>
+
+<div class="nav">
+  <button class="btn active" onclick="showTab('test',this)">TEST</button>
+  <button class="btn" onclick="showTab('coche',this)">COCHE</button>
+  <button class="btn" onclick="showTab('tips',this)">TIPS</button>
+  <button class="btn" onclick="showTab('motor',this)">MOTOR</button>
+  <button class="btn" onclick="showTab('build',this)">BUILD</button>
+  <button class="btn" onclick="showTab('quest',this)">QUEST</button>
+  <button class="btn" onclick="showTab('notas',this)">NOTAS</button>
+  <button class="btn" onclick="showTab('20y',this)">20Y</button>
 </div>
 
-<div id="tab-test" class="tab-content active">
-  <div class="sub-tabs">
-    <button class="sub-tab-btn active" onclick="cambiarSubTab('test','general')">General</button>
-    <button class="sub-tab-btn" onclick="cambiarSubTab('test','señales')">Señales</button>
-    <button class="sub-tab-btn" onclick="cambiarSubTab('test','normas')">Normas</button>
-    <button class="sub-tab-btn" onclick="cambiarSubTab('test','mecanica')">Mecánica</button>
-  </div>
-
-  <div id="test-general" class="sub-content active">
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;font-size:14px">
-        <span>Aciertos: <span id="test-general-aciertos">0</span></span>
-        <span>Racha: <span id="test-general-racha">0</span> 🔥</span>
-        <span>Score: <span id="test-general-score">0</span></span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="test-general-progress"></div></div>
-      <h3 id="test-general-pregunta" style="margin:15px 0">Cargando...</h3>
-      <div id="test-general-opciones"></div>
-      <div id="test-general-feedback" class="feedback"></div>
-      <button class="btn" id="btn-sig-test-general" onclick="siguienteTest('general')" disabled>Siguiente</button>
-    </div>
-  </div>
-
-  <div id="test-señales" class="sub-content">
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;font-size:14px">
-        <span>Aciertos: <span id="test-señales-aciertos">0</span></span>
-        <span>Racha: <span id="test-señales-racha">0</span> 🔥</span>
-        <span>Score: <span id="test-señales-score">0</span></span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="test-señales-progress"></div></div>
-      <h3 id="test-señales-pregunta" style="margin:15px 0">Cargando...</h3>
-      <div id="test-señales-opciones"></div>
-      <div id="test-señales-feedback" class="feedback"></div>
-      <button class="btn" id="btn-sig-test-señales" onclick="siguienteTest('señales')" disabled>Siguiente</button>
-    </div>
-  </div>
-
-  <div id="test-normas" class="sub-content">
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;font-size:14px">
-        <span>Aciertos: <span id="test-normas-aciertos">0</span></span>
-        <span>Racha: <span id="test-normas-racha">0</span> 🔥</span>
-        <span>Score: <span id="test-normas-score">0</span></span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="test-normas-progress"></div></div>
-      <h3 id="test-normas-pregunta" style="margin:15px 0">Cargando...</h3>
-      <div id="test-normas-opciones"></div>
-      <div id="test-normas-feedback" class="feedback"></div>
-      <button class="btn" id="btn-sig-test-normas" onclick="siguienteTest('normas')" disabled>Siguiente</button>
-    </div>
-  </div>
-
-  <div id="test-mecanica" class="sub-content">
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;font-size:14px">
-        <span>Aciertos: <span id="test-mecanica-aciertos">0</span></span>
-        <span>Racha: <span id="test-mecanica-racha">0</span> 🔥</span>
-        <span>Score: <span id="test-mecanica-score">0</span></span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="test-mecanica-progress"></div></div>
-      <h3 id="test-mecanica-pregunta" style="margin:15px 0">Cargando...</h3>
-      <div id="test-mecanica-opciones"></div>
-      <div id="test-mecanica-feedback" class="feedback"></div>
-      <button class="btn" id="btn-sig-test-mecanica" onclick="siguienteTest('mecanica')" disabled>Siguiente</button>
-    </div>
-  </div>
-</div>
-
-<div id="tab-examen" class="tab-content">
+<div id="test" class="tab">
   <div class="card">
-    <h2>Modo Examen DGT</h2>
-    <p>30 preguntas aleatorias. Máximo 3 fallos. Tiempo: 30 min.</p>
-    <div style="text-align:center;font-size:32px;margin:20px 0" id="examen-timer">30:00</div>
-    <div class="progress-bar"><div class="progress-fill" id="examen-progress"></div></div>
-    <p>Pregunta <span id="examen-num">0</span>/30 | Aciertos: <span id="examen-aciertos">0</span></p>
-    <h3 id="examen-pregunta" style="margin:15px 0">Pulsa Iniciar Examen</h3>
-    <div id="examen-opciones"></div>
-    <button class="btn" id="btn-iniciar-examen" onclick="iniciarExamen()">Empezar Examen</button>
-    <button class="btn" id="btn-sig-examen" onclick="siguientePreguntaExamen()" style="display:none" disabled>Siguiente</button>
-    <div id="examen-resultado" style="display:none"></div>
+    <h2>TEST DGT <span class="badge">50/DÍA</span></h2>
+    <div class="metric"><span>Progreso hoy</span><span class="val" id="testProg">0/50</span></div>
+    <div class="metric"><span>Aciertos</span><span class="val" id="testAc">0</span></div>
+    <div id="testQ"></div>
+    <button class="save" onclick="siguienteTest()">SIGUIENTE PREGUNTA</button>
   </div>
 </div>
 
-<div id="tab-situaciones" class="tab-content">
-  <div class="sub-tabs">
-    <button class="sub-tab-btn active" onclick="cambiarSubTab('sit','clima')">Clima</button>
-  </div>
-  <div id="sit-clima" class="sub-content active">
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;font-size:14px">
-        <span>Aciertos: <span id="sit-clima-aciertos">0</span></span>
-        <span>Score: <span id="sit-clima-score">0</span></span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="sit-clima-progress"></div></div>
-      <h3 id="sit-clima-pregunta" style="margin:15px 0">Cargando...</h3>
-      <div id="sit-clima-opciones"></div>
-      <div id="sit-clima-feedback" class="feedback"></div>
-      <button class="btn" id="btn-sig-sit-clima" onclick="siguienteSituacion('clima')" disabled>Siguiente</button>
-    </div>
-  </div>
-</div>
-
-<div id="tab-garage" class="tab-content">
+<div id="coche" class="tab hidden">
   <div class="card">
-    <h2>Tu Garage</h2>
-    <p id="garage-score">🏎️ 0 HP</p>
+    <h2>SITUACIONES REALES <span class="badge">50/DÍA</span></h2>
+    <div class="metric"><span>Progreso hoy</span><span class="val" id="sitProg">0/50</span></div>
+    <div class="metric"><span>Aciertos</span><span class="val" id="sitAc">0</span></div>
+    <div id="sitQ"></div>
+    <button class="save" onclick="siguienteSituacion()">SIGUIENTE SITUACIÓN</button>
   </div>
-  <div id="garage-lista"></div>
 </div>
 
-<div id="tab-tienda" class="tab-content">
+<div id="tips" class="tab hidden">
   <div class="card">
-    <h2>Tienda de Emojis</h2>
+    <h2>TIPS DIARIOS <span class="badge">3/DÍA</span></h2>
+    <div class="metric"><span id="tipsFecha"></span><span class="val" id="notifStatus">Notif: OFF</span></div>
+    <div id="tipsHoy"></div>
   </div>
-  <div id="emoji-tienda"></div>
 </div>
 
-<div id="tab-tips" class="tab-content">
+<div id="motor" class="tab hidden">
   <div class="card">
-    <h2>Tips de Conducción</h2>
+    <h2>SUPERCAR BUILD <span class="badge">BY POINTS</span></h2>
+    <div class="score" id="puntos">0</div>
+    <div class="metric"><span>Nivel</span><span class="val" id="nivel">1</span></div>
+    <div id="motorPiezas"></div>
   </div>
-  <div id="tips-lista"></div>
 </div>
 
-<div class="tabs">
-  <button class="tab-btn active" onclick="cambiarTab('test')">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2v-4h2v4zm4 0h-2v-2h2v2z"/></svg>
-    Test
-  </button>
-  <button class="tab-btn" onclick="cambiarTab('examen')">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
-    Examen
-  </button>
-  <button class="tab-btn" onclick="cambiarTab('situaciones')">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-    Casos
-  </button>
-  <button class="tab-btn" onclick="cambiarTab('garage')">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
-    Garage
-  </button>
-  <button class="tab-btn" onclick="cambiarTab('tienda')">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-    Tienda
-  </button>
-  <button class="tab-btn" onclick="cambiarTab('tips')">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6A2.5 2.5 0 0112 16c-.8 0-1.52-.38-1.85-.99l-.85-.6C7.8 13.31 7 11.43 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.43-.8 4.31-2.15 5.1z"/></svg>
-    Tips
-  </button>
+<div id="build" class="tab hidden">
+  <div class="card">
+    <h2>BUILD CAR <span class="badge">186624 NFT</span></h2>
+    <div class="metric"><span>Coste Build</span><span class="val" id="costeBuild">0 pts</span></div>
+    <div class="metric"><span>Tus puntos</span><span class="val" id="puntosBuild">0</span></div>
+    <label>Chasis</label><select id="selChasis" onchange="calcBuild()"></select>
+    <label>Motor</label><select id="selMotor" onchange="calcBuild()"></select>
+    <label>Aero</label><select id="selAero" onchange="calcBuild()"></select>
+    <label>Escape</label><select id="selEscape" onchange="calcBuild()"></select>
+    <label>Suspensión</label><select id="selSusp" onchange="calcBuild()"></select>
+    <label>Frenos</label><select id="selFrenos" onchange="calcBuild()"></select>
+    <div id="buildCoche"></div>
+    <button class="save" id="btnNFT" onclick="canjearNFT()" disabled>CANJEAR NFT</button>
+  </div>
 </div>
 
-<script src="app.js"></script>
+<div id="quest" class="tab hidden">
+  <div class="card">
+    <h2>QUEST DIARIA</h2>
+    <div class="alert amber">Completa 10 TEST + 5 COCHE para +100pts</div>
+    <div class="metric"><span>TEST</span><span class="val" id="questTest">0/10</span></div>
+    <div class="metric"><span>COCHE</span><span class="val" id="questSit">0/5</span></div>
+    <button class="save" id="btnQuest" onclick="claimQuest()" disabled>CLAIM 100PTS</button>
+  </div>
+</div>
+
+<div id="notas" class="tab hidden">
+  <div class="card">
+    <h2>NOTAS CONDUCCIÓN</h2>
+    <textarea id="notasTxt" placeholder="Errores hoy, cosas a mejorar..."></textarea>
+    <button class="save" onclick="guardarNota()">GUARDAR</button>
+  </div>
+</div>
+
+<div id="20y" class="tab hidden">
+  <div class="card">
+    <h2>PROGRESO 20Y</h2>
+    <div class="score" id="ptsTot">0</div>
+    <div class="metric"><span>Racha</span><span class="val" id="racha">0 días</span></div>
+    <div class="metric"><span>NFTs canjeados</span><span class="val" id="nfts">0</span></div>
+    <div class="metric"><span>Nivel</span><span class="val" id="nivel20y">1</span></div>
+    <div class="alert">Build Cars. Master Driving. 20Y Execution.</div>
+    <div class="metric"><span>NFTs en garaje</span><span class="val" id="nftsCount">0</span></div>
+    <button class="save" onclick="verGaraje()">VER MI GARAJE</button>
+    <div id="listaNFT"></div>
+  </div>
+</div>
+
+<div class="footer">DRIVE20Y V11.10.16 | 20Y SYSTEMS | Datos locales 100%</div>
+
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+// 100 PREGUNTAS DGT
+const DGT=[
+['¿Velocidad máxima en ciudad?',['50 km/h','60 km/h','40 km/h'],0],
+['¿Qué significa STOP?',['Parar siempre','Ceder paso','Prohibido'],0],
+['¿Tasa alcohol novel?',['0.3 g/l','0.5 g/l','0.0 g/l'],0],
+['¿Distancia seguridad lluvia?',['Doble','Igual','Mitad'],0],
+['¿Luz antiniebla trasera?',['Niebla densa','Lluvia','Siempre'],0],
+['¿Edad mínima carnet B?',['18 años','17 años','16 años'],0],
+['¿Cinturón obligatorio?',['Siempre','Solo carretera','Solo delante'],0],
+['¿Móvil al conducir?',['Prohibido con mano','Permitido','Solo semáforo'],0],
+['¿Triángulo avería?',['50m mínimo','10m','100m'],0],
+['¿Límite autopista turismos?',['120 km/h','100 km/h','110 km/h'],0],
+['¿Señal circular roja con franja?',['Prohibición','Obligación','Peligro'],0],
+['¿Prioridad en rotonda?',['El de dentro','El que entra','Derecha'],0],
+['¿Alcohol 0.25 mg/l aire?',['0.5 g/l sangre aprox','0.3 g/l','0.8 g/l'],0],
+['¿Chaleco reflectante?',['Obligatorio salir del coche','Recomendado','Solo noche'],0],
+['¿ITV turismo cada cuánto?',['4-10 años: cada 2, >10: anual','Siempre anual','Cada 5 años'],0],
+['¿Luz cruce obligatoria?',['Túneles, noche, poca visibilidad','Siempre','Solo noche'],0],
+['¿Adelantar en continua?',['Prohibido','Permitido a bici','Si no viene nadie'],0],
+['¿Casco en moto?',['Obligatorio siempre','Solo carretera','Solo >125cc'],0],
+['¿Niños delante?',['>135cm o >12 años','>150cm','Siempre permitido'],0],
+['¿Frenada emergencia ABS?',['Pisar a fondo sin soltar','Bombear','Freno mano'],0],
+['¿Señal STOP sin visibilidad?',['Parar 2 veces','Ceder solo','Pasar lento'],0],
+['¿Glorieta 2 carriles salida 3ª?',['Carril interior','Exterior','Cualquiera'],0],
+['¿Límite convencional 100 o 90?',['90 km/h general','100 km/h','80 km/h'],0],
+['¿Uso claxon ciudad?',['Prohibido salvo peligro','Permitido siempre','Solo noche'],0],
+['¿Alcohol + drogas?',['Multa + pérdida puntos','Solo multa','Legal'],0],
+['¿Triángulos o V-16?',['V-16 desde 2026','Triángulos siempre','Ninguno'],0],
+['¿Luz larga en poblado?',['Prohibida salvo peligro','Permitida','Obligatoria'],0],
+['¿Remolque ligero <750kg?',['Carnet B vale','Necesitas E','Prohibido'],0],
+['¿Ceder paso a peatón?',['En paso de peatones siempre','Solo si mira','No obligatorio'],0],
+['¿Neumáticos profundidad mínima?',['1.6mm','1mm','2mm'],0],
+['¿Teléfono manos libres?',['Permitido sin manipular','Prohibido','Solo con cable'],0],
+['¿Aparcar en vado?',['Prohibido siempre','Permitido 5min','Si no molestas'],0],
+['¿Señal azul redonda?',['Obligación','Recomendación','Fin prohibición'],0],
+['¿Velocidad vía servicio?',['60 km/h','80 km/h','50 km/h'],0],
+['¿Alcohol bicicletas?',['Misma tasa que coche','No aplica','Doble'],0],
+['¿Luz diurna obligatoria?',['Vehículos nuevos','Todos','Ninguno'],0],
+['¿Adelantar ciclista?',['1.5m mínimo','1m','0.5m'],0],
+['¿Stop vs Ceda?',['Stop: parar total','Igual','Ceda: parar'],0],
+['¿Menor 18 en ciclomotor?',['No puede llevar pasajero','Sí puede','Solo familiar'],0],
+['¿ITV desfavorable?',['2 meses para reparar','1 mes','No circular'],0],
+['¿Luces emergencia?',['Avería o accidente','Parar a comprar','Siempre'],0],
+['¿Prioridad derecha?',['Sin señal, ceder al de derecha','Izquierda','No existe'],0],
+['¿Límite travesía?',['50 km/h','40 km/h','60 km/h'],0],
+['¿Silla niños hasta?',['135cm altura','12 años','10 años'],0],
+['¿Tasa drogas?',['0 tolerancia','0.5','0.3'],0],
+['¿Aparcar en carga/descarga?',['Prohibido turismos','5 min','30 min'],0],
+['¿Luz marcha atrás?',['1 o 2 blancas','Rojas','Amarillas'],0],
+['¿Señal fin prohibición?',['Circular blanca/negra','Azul','Amarilla'],0],
+['¿Alcohol 0.6 mg/l?',['Delito penal','Multa','Nada'],0],
+['¿Carril VAO?',['2+ ocupantes o eco','Todos','Solo bus'],0],
+['¿Distancia seg 100km/h?',['100m o 3s','50m','200m'],0],
+['¿Rotonda con semáforo?',['Semáforo manda','Rotonda manda','Derecha'],0],
+['¿Límite furgón 3500kg autopista?',['90 km/h','120 km/h','100 km/h'],0],
+['¿Claxon en túnel?',['Prohibido','Permitido','Obligatorio'],0],
+['¿Peatón cruza mal?',['Debes ceder igual','No ceder','Pitar'],0],
+['¿Neumáticos diferentes eje?',['Prohibido','Permitido','Solo invierno'],0],
+['¿Luz antiniebla delantera?',['Niebla/lluvia intensa','Siempre','Noche'],0],
+['¿Adelantar por derecha?',['Prohibido salvo retenciones','Permitido','Obligatorio'],0],
+['¿Cinturón embarazadas?',['Obligatorio siempre','Exentas','Solo detrás'],0],
+['¿Señal cuadrada azul?',['Información','Obligación','Peligro'],0],
+['¿Límite autopista novel?',['120 km/h igual','80 km/h','100 km/h'],0],
+['¿Parar en doble fila?',['Prohibido','2 min','Si no molestas'],0],
+['¿Alcohol en barco?',['También aplica','No aplica','Doble'],0],
+['¿Luz freno fundida?',['Multa + ITV desfavorable','Nada','Solo aviso'],0],
+['¿Prioridad ambulancia?',['Siempre ceder','Solo sirena','No obligatorio'],0],
+['¿Gafas reserva coche?',['Obligatorias si las usas','Recomendadas','No'],0],
+['¿Adelantar camión en puerto?',['Línea discontinua solo','Siempre','Nunca'],0],
+['¿Límite caravana autopista?',['90 km/h','120 km/h','80 km/h'],0],
+['¿Niños en moto?',['>12 años o >7 con padres','Cualquier edad','Prohibido'],0],
+['¿ITV caducada circular?',['Prohibido, multa','1 mes gracia','Permitido'],0],
+['¿Luz gálibo camiones?',['Delanteras blancas, traseras rojas','Amarillas','Verdes'],0],
+['¿Señal triangular?',['Peligro','Ceda','Stop'],0],
+['¿Velocidad aconsejada?',['Panel cuadrado azul','Redonda azul','Triangular'],0],
+['¿Alcohol 0.15 mg/l novel?',['Multa 500€ + 4 puntos','Legal','Delito'],0],
+['¿Aparcar en esquina?',['5m mínimo','1m','Permitido'],0],
+['¿Luz posición?',['Inmovilizado noche vía mal iluminada','Siempre','Nunca'],0],
+['¿Adelantar en paso peatones?',['Prohibido','Si no hay peatones','Permitido'],0],
+['¿Cinturón taxi ciudad?',['Obligatorio','Exento','Solo detrás'],0],
+['¿Señal redonda azul flecha?',['Sentido obligatorio','Recomendado','Prohibido'],0],
+['¿Límite vía urbana 30?',['Calles 1 carril por sentido','Todas','Ninguna'],0],
+['¿Alcohol VMP patinete?',['0.0 g/l','0.5 g/l','No aplica'],0],
+['¿Triángulo emergencia 2026?',['Sustituido por V-16','Obligatorio','Opcional'],0],
+['¿Luz curva?',['Se enciende al girar','Siempre','Nunca'],0],
+['¿Prioridad tranvía?',['Siempre tiene','Solo en cruce','No'],0],
+['¿Neumáticos invierno M+S?',['Válidos','No','Solo nieve'],0],
+['¿Adelantar ciclista línea continua?',['Permitido si 1.5m','Prohibido','Multa'],0],
+['¿Cinturón autobús?',['Obligatorio si tiene','Exento','Solo niños'],0],
+['¿Señal rombo amarillo?',['Prioridad intersección','Ceda','Stop'],0],
+['¿Límite autopista con remolque >750kg?',['80 km/h','90 km/h','100 km/h'],0],
+['¿Parar en carril bus?',['Prohibido','5 min','Si no viene bus'],0],
+['¿Alcohol 1.2 mg/l?',['Prisión 3-6 meses','Multa','Nada'],0],
+['¿Luz día moto?',['Obligatoria siempre','Recomendada','Solo noche'],0],
+['¿Prioridad paso estrecho?',['El que llegó primero','El más grande','Sube'],0],
+['¿Neumáticos recauchutados?',['Permitidos eje trasero','Prohibidos','Solo camión'],0],
+['¿Adelantar tractor?',['Línea discontinua','Siempre','Nunca'],0],
+['¿Cinturón conductor VTC?',['Obligatorio','Exento ciudad','Solo carretera'],0],
+['¿Señal octogonal?',['Stop única','Ceda','Peligro'],0],
+['¿Límite convencional con arcén 1.5m?',['100 km/h','90 km/h','80 km/h'],0],
+['¿Alcohol menor bici?',['0.0 g/l','0.5 g/l','No aplica'],0],
+['¿Rueda repuesto obligatoria?',['No, kit o runflat vale','Sí','Solo ITV'],0]
+];
+
+// 100 SITUACIONES REALES
+const SIT=[
+['Rotonda: sales 3ª salida, ¿intermitente?',['Izquierda al entrar, derecha al salir','Solo derecha','No poner'],0],
+['Adelantas bici en carretera, ¿distancia mínima?',['1.5m','1m','0.5m'],0],
+['Aparcas en cuesta con bordillo bajando, ruedas',['Hacia bordillo','Rectas','Hacia fuera'],0],
+['Incorporación autopista, ¿quién cede?',['El que se incorpora','El del carril','Nadie'],0],
+['Camión delante te tapa semáforo, ¿qué haces?',['Mantienes distancia y esperas ver','Te pegas para ver','Adelantas'],0],
+['Aquaplaning a 100km/h, ¿qué haces?',['Sueltas gas, NO frenas, volante recto','Frenas fuerte','Giras'],0],
+['Reventón rueda delantera, ¿primer paso?',['Acelerar 1s para controlar','Frenar fuerte','Soltar volante'],0],
+['Reventón rueda trasera, ¿qué NO hacer?',['Frenar brusco','Contravolante suave','Acelerar leve'],0],
+['Frenada emergencia con ABS, ¿cómo?',['Pisar a fondo sin soltar','Bombear pedal','Freno mano'],0],
+['Curva ciega montaña, ¿señalizas?',['Claxon 2x corto 100m antes','Luces largas','Nada'],0]
+];
+
+// --- CORE 20Y ---
+let data = {
+  puntos: 0,
+  testHechas: 0,
+  testAciertos: 0,
+  sitHechas: 0,
+  sitAciertos: 0,
+  nfts: 0,
+  racha: 0,
+  garaje: []
+};
+
+// Cargar datos
+function loadData(){
+  const saved = localStorage.getItem('drive20y');
+  if(saved) data = JSON.parse(saved);
+  updateUI();
 }
+
+// Guardar datos
+function saveData(){
+  localStorage.setItem('drive20y', JSON.stringify(data));
+}
+
+// CAMBIAR PESTAÑAS
+function showTab(id, btn){
+  document.querySelectorAll('.tab').forEach(t => t.classList.add('hidden'));
+  document.querySelectorAll('.nav .btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.remove('hidden');
+  btn.classList.add('active');
+}
+
+// TEST DGT
+function siguienteTest(){
+  if(data.testHechas >= 50) return alert('Ya hiciste 50 hoy. Vuelve mañana.');
+  const q = DGT[Math.floor(Math.random() * DGT.length)];
+  const html = `<div class="tip"><b>${q[0]}</b></div>` + 
+    q[1].map((a,i) => `<button class="btn ans" onclick="responderTest(${i},${q[2]})">${a}</button>`).join('');
+  document.getElementById('testQ').innerHTML = html;
+}
+
+function responderTest(elegida, correcta){
+  data.testHechas++;
+  if(elegida === correcta){
+    data.testAciertos++;
+    data.puntos += 10;
+    alert('✅ Correcto +10 pts');
+  } else {
+    alert('❌ Fallaste');
+  }
+  saveData();
+  updateUI();
+  siguienteTest();
+}
+
+// SITUACIONES
+function siguienteSituacion(){
+  if(data.sitHechas >= 50) return alert('Ya hiciste 50 hoy.');
+  const q = SIT[Math.floor(Math.random() * SIT.length)];
+  const html = `<div class="tip"><b>${q[0]}</b></div>` + 
+    q[1].map((a,i) => `<button class="btn ans" onclick="responderSit(${i},${q[2]})">${a}</button>`).join('');
+  document.getElementById('sitQ').innerHTML = html;
+}
+
+function responderSit(elegida, correcta){
+  data.sitHechas++;
+  if(elegida === correcta){
+    data.sitAciertos++;
+    data.puntos += 10;
+    alert('✅ Correcto +10 pts');
+  } else {
+    alert('❌ Fallaste');
+  }
+  saveData();
+  updateUI();
+  siguienteSituacion();
+}
+
+// BUILD
+function calcBuild(){
+  document.getElementById('costeBuild').innerText = '1000 pts';
+  document.getElementById('puntosBuild').innerText = data.puntos;
+  document.getElementById('btnNFT').disabled = data.puntos < 1000;
+}
+
+function canjearNFT(){
+  if(data.puntos >= 1000){
+    data.puntos -= 1000;
+    data.nfts++;
+    data.garaje.push('Coche #' + Date.now());
+    alert('🚗 NFT canjeado!');
+    saveData();
+    updateUI();
+  }
+}
+
+// NOTAS
+function guardarNota(){
+  const txt = document.getElementById('notasTxt').value;
+  localStorage.setItem('drive20y_notas', txt);
+  alert('Nota guardada');
+}
+
+// NOTIFICACIONES
+async function requestNotifPerm(){
+  if(!('serviceWorker' in navigator) || !('Notification' in window)){
+    return alert('Tu navegador no soporta notificaciones');
+  }
+
+  await navigator.serviceWorker.register('/sw.js');
+  const perm = await Notification.requestPermission();
+  if(perm !== 'granted') return alert('Permiso denegado');
+
+  const now = new Date();
+  [8, 20].forEach(hour => {
+    const trigger = new Date();
+    trigger.setHours(hour, 0, 0, 0);
+    if(trigger < now) trigger.setDate(trigger.getDate() + 1);
+    
+    setTimeout(() => {
+      showNotif(hour);
+      setInterval(() => showNotif(hour), 24*60*60*1000);
+    }, trigger - now);
+  });
+
+  document.getElementById('notifStatus').innerText = 'Notif: ON';
+  alert('Notificaciones activadas para 8:00 y 20:00');
+}
+
+function showNotif(hour){
+  const msgs = hour === 8 
+    ? ["Build Cars. Master Driving. 20 años empiezan hoy.", "50 preguntas = 500 puntos. Ve a por ellos."]
+    : ["¿Progreso 20Y hoy? Si no avanzas, retrocedes.", "El garaje no se llena solo. Cierra el día fuerte."];
+  
+  const msg = msgs[Math.floor(Math.random() * msgs.length)];
+  
+  new Notification('DRIVE20Y', {
+    body: msg,
+    icon: '/icon-192.png',
+    tag: 'drive20y-daily'
+  });
+}
+
+// QUEST
+function claimQuest(){
+  if(data.testHechas >= 10 && data.sitHechas >= 5){
+    data.puntos += 100;
+    alert('+100 pts por Quest');
+    saveData();
+    updateUI();
+  }
+}
+
+// GARAJE
+function verGaraje(){
+  const lista = data.garaje.map(n => `<div class="metric"><span>${n}</span></div>`).join('');
+  document.getElementById('listaNFT').innerHTML = lista || 'Garaje vacío';
+}
+
+// ACTUALIZAR UI
+function updateUI(){
+  document.getElementById('puntos').innerText = data.puntos;
+  document.getElementById('ptsTot').innerText = data.puntos;
+  document.getElementById('testProg').innerText = data.testHechas + '/50';
+  document.getElementById('testAc').innerText = data.testAciertos;
+  document.getElementById('sitProg').innerText = data.sitHechas + '/50';
+  document.getElementById('sitAc').innerText = data.sitAciertos;
+  document.getElementById('nfts').innerText = data.nfts;
+  document.getElementById('nftsCount').innerText = data.garaje.length;
+  document.getElementById('racha').innerText = data.racha + ' días';
+  document.getElementById('nivel').innerText = Math.floor(data.puntos/500) + 1;
+  document.getElementById('nivel20y').innerText = Math.floor(data.puntos/500) + 1;
+  document.getElementById('questTest').innerText = data.testHechas + '/10';
+  document.getElementById('questSit').innerText = data.sitHechas + '/5';
+  document.getElementById('btnQuest').disabled = !(data.testHechas >= 10 && data.sitHechas >= 5);
+  document.getElementById('tipsFecha').innerText = new Date().toLocaleDateString('es-ES');
+  document.getElementById('notasTxt').value = localStorage.getItem('drive20y_notas') || '';
+}
+
+// INIT
+window.onload = () => {
+  loadData();
+  siguienteTest();
+  siguienteSituacion();
+  calcBuild();
+};
 </script>
 </body>
 </html>
