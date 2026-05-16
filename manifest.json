@@ -1,7 +1,8 @@
 {
   "name": "GasDrive DGT 2026",
   "short_name": "GasDrive",
-  "start_url": "./index.html",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#000",
   "theme_color": "#000",
@@ -19,4 +20,4 @@
       "purpose": "any maskable"
     }
   ]
-} 
+}
