@@ -1,12 +1,10 @@
 {
-  "name": "GasDrive Plus",
+  "name": "GasDrive DGT 2026",
   "short_name": "GasDrive",
-  "description": "Prepárate para el carnet DGT 2026",
-  "start_url": "./",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#0a0a0f",
-  "orientation": "portrait",
+  "background_color": "#000",
+  "theme_color": "#000",
   "icons": [
     {
       "src": "./icon-192.png",
@@ -15,7 +13,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "./icon-512.png",
+      "src": "./icon-512.png", 
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
