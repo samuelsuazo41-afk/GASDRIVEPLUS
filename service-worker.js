@@ -1,6 +1,5 @@
-const CACHE_NAME = 'gasdrive-DGT2026';
-const urlsToCache = [
-  './',
+const CACHE_NAME = 'gasdriveplus';
+const urlsToCache = https://samuelsuazo41-afk.github.io/GASDRIVEPLUS/
   './index.html',
   './app.js',
   './manifest.json',
