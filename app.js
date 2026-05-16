@@ -1,5 +1,5 @@
-// GASDRIVE V7.9 - 380 PREGUNTAS DGT 2026
-const VERSION = "7.9";
+// GASDRIVE V7.11 - 380 PREGUNTAS DGT 2026
+const VERSION = "7.11";
 
 // COMBO DOPAMINA
 const EMOJIS_ACIERTO = ['🚀','💎','👑','🔥','💯','⚡','🏆','🦄','🤑','✅','💪','😎','🎯','💥','🌟','🎉'];
@@ -241,7 +241,7 @@ if (document.readyState === 'loading') {
 }
 
 function init() {
-  console.log("GasDrive V7.9 cargado");
+  console.log("GasDrive V7.11 cargado");
   actualizarCoins();
   cargarPregunta('general');
   cargarPregunta('señales');
@@ -315,7 +315,7 @@ function mostrarEmoji(acierto, elemento) {
   elemento.style.position = 'relative';
   elemento.appendChild(span);
   setTimeout(() => span.remove(), 600);
-  if(navigator.vibrate) navigator.vibrate(acierto? [30,20,30] : 100);
+  if(navigator.vibrate) navigator.vibrate(acierto? [30][20][30] : 100);
 }
 
 // TEST
@@ -451,11 +451,11 @@ function siguienteSituacion(cat) {
 // EXAMEN DGT 2026
 function iniciarExamen() {
   const todas = [
-   ...PREGUNTAS.general,
-   ...PREGUNTAS.señales,
-   ...PREGUNTAS.normas,
-   ...PREGUNTAS.mecanica,
-   ...SITUACIONES.clima
+  ...PREGUNTAS.general,
+  ...PREGUNTAS.señales,
+  ...PREGUNTAS.normas,
+  ...PREGUNTAS.mecanica,
+  ...SITUACIONES.clima
   ];
 
   if(todas.length < 30) {
@@ -484,6 +484,8 @@ function iniciarTimerExamen() {
     const min = Math.floor(estado.examen.tiempo / 60);
     const seg = estado.examen.tiempo % 60;
     document.getElementById('examen-timer').textContent =
+       document.getElementById('examen-timer').textContent = 
+  `${min.toString().padStart(2, '0')}:$    {seg.toString().padStart(2, '0')}`;
       `${min.toString().padStart(2,'0')}:${seg.toString().padStart(2,'0')}`;
 
     if(estado.examen.tiempo <= 0) finalizarExamen();
@@ -495,8 +497,7 @@ function cargarPreguntaExamen() {
 
   const p = estado.examen.preguntas[estado.examen.indice];
   document.getElementById('examen-num').textContent = estado.examen.indice + 1;
-  document.getElementById('examen-aciertos').
-    document.getElementById('examen-aciertos').textContent = estado.examen.aciertos;
+  document.getElementById('examen-aciertos').textContent = estado.examen.aciertos;
   document.getElementById('examen-pregunta').textContent = p.q;
   document.getElementById('examen-progress').style.width = `${(estado.examen.indice/30)*100}%`;
 
@@ -684,8 +685,8 @@ function notificacionLocal(titulo, mensaje) {
   navigator.serviceWorker.ready.then(registration => {
     registration.showNotification(titulo, {
       body: mensaje,
-      icon: '/GASDRIVEPLUS/icon-192.png',
-      badge: '/GASDRIVEPLUS/icon-192.png',
+      icon: './icon-192.png',
+      badge: './icon-192.png',
       vibrate: [200, 100, 200],
       tag: 'gasdrive-motivation',
       renotify: true
